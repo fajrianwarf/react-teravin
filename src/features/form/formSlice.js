@@ -37,7 +37,6 @@ const formSlice = createSlice({
 
 export default formSlice.reducer;
 export const {
-  generateId,
   addForm,
   addPendidikan,
   addPengalamanKerja,

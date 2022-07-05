@@ -5,12 +5,12 @@ import DataPersonal from '../components/DataPersonal';
 import Keahlian from '../components/Keahlian';
 import PengalamanKerja from '../components/PengalamanKerja';
 import RiwayatPendidikan from '../components/RiwayatPendidikan';
-import { generateId, resetData } from '../features/form/formSlice';
+import { resetData } from '../features/form/formSlice';
 
 export default function Add() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const reduxState = useSelector((state) => state.form);
+  // const reduxState = useSelector((state) => state.form);
   const { form, pendidikan, pengalamanKerja, keahlian } = useSelector(
     (state) => state.form
   );
@@ -35,7 +35,6 @@ export default function Add() {
   };
 
   const sendData = () => {
-    dispatch(generateId());
     let listData = {
       ...form,
       pendidikan: pendidikan.filter((item) => item !== ''),
@@ -58,7 +57,7 @@ export default function Add() {
     if (page === 0) {
       return (
         <button
-          className='px-4 py-1 border rounded-md'
+          className='button is-info is-outlined'
           onClick={() => setPage((curr) => curr + 1)}
           disabled={
             form.name === '' ||
@@ -73,9 +72,9 @@ export default function Add() {
     } else if (page === 1) {
       return (
         <button
-          className='px-4 py-1 border rounded-md'
+          className='button is-info is-outlined'
           onClick={() => setPage((curr) => curr + 1)}
-          disabled={pendidikan[0] === ''}
+          disabled={pendidikan.find((item) => item === '') === ''}
         >
           Next
         </button>
@@ -83,9 +82,9 @@ export default function Add() {
     } else if (page === 2) {
       return (
         <button
-          className='px-4 py-1 border rounded-md'
+          className='button is-info is-outlined'
           onClick={() => setPage((curr) => curr + 1)}
-          disabled={pengalamanKerja[0] === ''}
+          disabled={pengalamanKerja.find((item) => item === '') === ''}
         >
           Next
         </button>
@@ -93,9 +92,9 @@ export default function Add() {
     } else {
       return (
         <button
-          className='px-4 py-1 border rounded-md'
+          className='button is-info is-outlined'
           onClick={() => sendData()}
-          disabled={keahlian[0] === ''}
+          disabled={keahlian.find((item) => item === '') === ''}
         >
           {page >= 3 ? 'Submit' : 'Next'}
         </button>
@@ -104,26 +103,26 @@ export default function Add() {
   };
 
   return (
-    <div className='container h-screen px-4 mx-auto'>
-      <div className='p-4 mt-4 border'>
-        <div className='mb-2'>Form submission</div>
+    <div className='container px-4 m-auto'>
+      <div className='p-5 mt-4 box'>
+        <div className='mb-2 is-size-2'>Form submission</div>
         <div>Step {page + 1} of 4</div>
         {pageDisplay()}
-        <div className='flex justify-end gap-x-2'>
-          <div>
+        <div className='columns'>
+          <div className='column has-text-left'>
             <button
               className={`${
-                page === 0 ? 'hidden' : ''
-              } px-4 py-1 border rounded-md`}
+                page === 0 ? 'is-hidden' : ''
+              } button is-danger is-outlined`}
               onClick={() => setPage((curr) => curr - 1)}
             >
               Prev
             </button>
           </div>
-          {buttonDisplay()}
+          <div className='column has-text-right'>{buttonDisplay()}</div>
         </div>
       </div>
-      <pre style={{ width: 200 }}>{JSON.stringify(reduxState)}</pre>
+      {/* <pre style={{ width: 200 }}>{JSON.stringify(reduxState)}</pre> */}
     </div>
   );
 }

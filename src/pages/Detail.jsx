@@ -6,41 +6,39 @@ export default function Detail() {
   const dataPersonal = ['name', 'address', 'email', 'phone'];
 
   return (
-    <div className='container h-screen px-4 py-4 mx-auto'>
+    <div className='container px-4 py-4 mx-auto'>
       <div className='flex justify-between mt-10 mb-4'>
-        <h2 className='text-2xl font-bold'>Detail views</h2>
-        <Link to={'/'} className='px-2 py-1 border rounded-md'>
+        <h2 className='is-size-1'>Detail views</h2>
+        <Link to={'/'} className='px-2 py-1 my-2 button is-info'>
           back
         </Link>
       </div>
-      <div className='px-4 py-2 bg-slate-300'>
+      <div className='box'>
         <div className='my-2'>
-          <h3 className='text-lg font-semibold'>Data Personal</h3>
-          <div className='grid grid-cols-1 mt-2 md:grid-cols-2 md:gap-x-12'>
+          <h3 className='mb-3 is-size-4'>Data Personal</h3>
+          <div
+            className='m-auto columns is-multiline'
+            style={{ verticalAlign: 'text-top' }}
+          >
             {dataPersonal.map((item) => (
-              <div className='flex items-center w-full my-2' key={item}>
-                <p className='inline-block w-1/6 text-sm capitalize md:text-base'>
-                  {item}
-                </p>
-                <p className='inline-block w-5/6 px-2 py-1 overflow-auto bg-white'>
-                  {state?.[item]}
-                </p>
+              <div className='column is-half columns' key={item}>
+                <p className='column is-half label'>{item}</p>
+                <p className='column is-half input is-flex'>{state?.[item]}</p>
               </div>
             ))}
           </div>
         </div>
         <hr />
         <div className='my-2'>
-          <h3 className='text-lg font-semibold'>Riwayat pendidikan</h3>
-          <div className='grid grid-cols-1 mt-2 md:grid-cols-2 md:gap-x-12'>
+          <h3 className='mb-3 is-size-4'>Riwayat pendidikan</h3>
+          <div
+            className='m-auto columns is-multiline'
+            style={{ verticalAlign: 'text-top' }}
+          >
             {state?.pendidikan?.map((item, index) => (
-              <div className='flex items-center w-full my-2' key={index}>
-                <p className='inline-block w-1/6 text-sm md:text-base'>
-                  Pend. {index + 1}
-                </p>
-                <p className='inline-block w-5/6 px-2 py-1 overflow-auto bg-white'>
-                  {item}
-                </p>
+              <div className='column is-half columns' key={index}>
+                <p className='column is-half label'>Pend. {index + 1}</p>
+                <p className='column is-half input is-flex'>{item}</p>
               </div>
             ))}
           </div>
@@ -48,16 +46,15 @@ export default function Detail() {
         <hr />
 
         <div className='my-2'>
-          <h3 className='text-lg font-semibold'>Pengalaman kerja</h3>
-          <div className='grid grid-cols-1 mt-2 md:grid-cols-2 md:gap-x-12'>
+          <h3 className='mb-3 is-size-4'>Pengalaman kerja</h3>
+          <div
+            className='m-auto columns is-multiline'
+            style={{ verticalAlign: 'text-top' }}
+          >
             {state?.pengalamanKerja?.map((item, index) => (
-              <div className='flex items-center w-full my-2' key={index}>
-                <p className='inline-block w-1/6 text-sm md:text-base'>
-                  Pek. {index + 1}
-                </p>
-                <p className='inline-block w-5/6 px-2 py-1 overflow-auto bg-white'>
-                  {item}
-                </p>
+              <div className='column is-half columns' key={index}>
+                <p className='column is-half label'>Pek. {index + 1}</p>
+                <p className='column is-half input is-flex'>{item}</p>
               </div>
             ))}
           </div>
@@ -65,23 +62,22 @@ export default function Detail() {
         <hr />
 
         <div className='my-2'>
-          <h3 className='text-lg font-semibold'>Keahlian</h3>
-          <div className='grid grid-cols-1 mt-2 md:grid-cols-2 md:gap-x-12'>
+          <h3 className='mb-3 is-size-4'>Keahlian</h3>
+          <div
+            className='m-auto columns is-multiline'
+            style={{ verticalAlign: 'text-top' }}
+          >
             {state?.keahlian?.map((item, index) => (
-              <div className='flex items-center w-full my-2' key={index}>
-                <p className='inline-block w-1/6 text-sm md:text-base'>
-                  Skill {index + 1}
-                </p>
-                <p className='inline-block w-5/6 px-2 py-1 overflow-auto bg-white'>
-                  {item}
-                </p>
+              <div className='column is-half columns is-vcentered' key={index}>
+                <p className='column is-half label'>Skill {index + 1}</p>
+                <p className='column is-half input is-flex'>{item}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className='flex justify-end w-full pb-4 mt-4'>
-        <Link to={'/'} className='px-2 py-1 border rounded-md '>
+      <div className='has-text-right'>
+        <Link to={'/'} className='button is-info'>
           done
         </Link>
       </div>

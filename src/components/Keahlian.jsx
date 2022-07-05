@@ -23,39 +23,45 @@ export default function Keahlian() {
   };
 
   return (
-    <div className='p-8 my-4 bg-slate-200'>
-      <h3 className='mb-2 text-lg font-semibold'>Keahlian</h3>
-      <div className='grid grid-cols-1'>
-        <div>
+    <div className='my-5'>
+      <h3 className='mb-2 is-size-4'>Keahlian</h3>
+      <div className='my-2 columns'>
+        <div className='column is-half'>
           {keahlian.map((item, index) => (
-            <div className='w-full my-2' key={index}>
-              <label
-                htmlFor='keahlian'
-                className='inline-block w-2/12 text-sm md:text-base'
-              >
+            <div className='field columns' key={index}>
+              <label htmlFor='keahlian' className='label column is-one-fifth'>
                 Skill {index + 1}
               </label>
-              <input
-                id='keahlian'
-                type='text'
-                placeholder='...'
-                value={item}
-                className='w-9/12 px-2 py-1 transition duration-300 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-400'
-                onChange={(e) => handleChange(e, index)}
-              />
+              <div className='control column is-three-fifths'>
+                <input
+                  id='keahlian'
+                  type='text'
+                  placeholder='...'
+                  value={item}
+                  className='input'
+                  onChange={(e) => handleChange(e, index)}
+                />
+                {keahlian[index] === '' && (
+                  <p className='help is-danger'>list can't be empty</p>
+                )}
+              </div>
               {keahlian.length !== 1 && index !== 0 && (
-                <button
-                  className='inline-block py-0.5 px-1 md:px-2 rounded-md ml-0.5 text-red-700 bg-white border'
-                  onClick={() => handleRemove(index)}
-                >
-                  x
-                </button>
+                <div className='column is-one-fifth'>
+                  <button
+                    className='button is-danger is-outlined'
+                    onClick={() => handleRemove(index)}
+                  >
+                    x
+                  </button>
+                </div>
               )}
             </div>
           ))}
         </div>
-        <div className='flex items-center justify-center py-2 mt-2 bg-white'>
-          <button onClick={() => handleAdd()}>+ add another skill</button>
+        <div className='box columns is-flex is-vcentered is-centered column is-half'>
+          <button className='button' onClick={() => handleAdd()}>
+            + add another skill
+          </button>
         </div>
       </div>
     </div>
