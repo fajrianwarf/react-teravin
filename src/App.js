@@ -4,17 +4,15 @@ import Detail from './pages/Detail';
 import Index from './pages/Index';
 
 function App() {
-	return (
-		<>
-			<BrowserRouter>
-				<Routes>
-					<Route path='/' element={<Index />} />
-					<Route path='/add' element={<Add />} />
-					<Route path='/detail' element={<Detail />} />
-				</Routes>
-			</BrowserRouter>
-		</>
-	);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Index />} />
+        <Route path='/add' element={<Add />} />
+        <Route path='/detail' element={<Detail />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
