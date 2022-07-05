@@ -29,7 +29,7 @@ export default function DataPersonal() {
                 dispatch(addForm({ ...form, [item]: e.target.value }))
               }
             />
-            {{ item } === '' && (
+            {form[item] === '' && (
               <div className='flex justify-end'>
                 <p className='inline-block w-4/5 text-red-700'>
                   {item} is required

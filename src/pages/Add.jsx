@@ -61,9 +61,9 @@ export default function Add() {
           className='px-4 py-1 border rounded-md'
           onClick={() => setPage((curr) => curr + 1)}
           disabled={
-            form.name === '' &&
-            form.email === '' &&
-            form.address === '' &&
+            form.name === '' ||
+            form.email === '' ||
+            form.address === '' ||
             form.phone === ''
           }
         >
